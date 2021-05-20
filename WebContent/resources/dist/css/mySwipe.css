@@ -1,0 +1,74 @@
+@charset "utf-8";
+/* CSS 초기화 */
+
+#visual * {
+    margin: 0;
+    padding: 0;
+}
+
+#visual img {
+    border: none;
+    vertical-align: top;
+}
+
+#visual li {
+    list-style: none;
+}
+
+/* swipe CSS */
+
+.swipe {
+    overflow: hidden;
+    visibility: hidden;
+    position: relative;
+}
+
+.swipe-wrap {
+    overflow: hidden;
+    position: relative;
+}
+
+.swipe-wrap>li {
+    float: left;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 스타일 정의 */
+
+#visual {
+    height: auto;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+#mySwipe img {
+    width: 100%;
+    max-width: 100%;
+}
+
+.touch_bullet {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.touch_bullet li {
+    float: left;
+}
+
+.touch_left_btn, .touch_right_btn {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.touch_left_btn {
+    left: 3%;
+}
+
+.touch_right_btn {
+    right: 3%;
+}
