@@ -4,11 +4,8 @@
 		 import="util.Cookies" %>
 		 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<fmt:setLocale value="" />
-<%-- <fmt:setBundle var="message" basename="localization.message" /> --%>
-<fmt:bundle basename="localization.message">
-	<fmt:message key="CONTENT_HEADER" var="contentHeader" />
-</fmt:bundle>
+<fmt:setLocale value="${param.lang}" />
+<fmt:setBundle var="message" basename="localization.message" />
 
 <%
 	String contextPath = request.getContextPath();
@@ -62,6 +59,7 @@
 	<!-- bootstrap wysihtml5 - text editor -->
 	<link rel="stylesheet" href="<%= contextPath %>/resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
+	<link rel="stylesheet" href="<%= contextPath %>/resources/dist/css/index.css" />
 	<link rel="stylesheet" href="<%= contextPath %>/resources/dist/css/mySwipe.css" />
 
 	<!-- Google Font -->
@@ -94,6 +92,17 @@
 								<i class="fa fa-globe"></i>
 							</a>
 						</li>
+						
+						<li>
+							<select id="language">
+								<option value="${param.lang}">언어 선택</option>
+								<option value="en">English</option>
+								<option value="ko">한국어</option>
+								<option value="ja">日本語</option>
+								<option value="zh">繁體中文</option>
+							</select>
+						</li>
+						
 						<!-- Messages: style can be found in dropdown.less-->
 						<li class="dropdown messages-menu">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -101,7 +110,11 @@
 								<span class="label label-success">4</span>
 							</a>
 							<ul class="dropdown-menu">
-								<li class="header">You have 4 messages</li>
+								<li class="header">
+									<fmt:message bundle="${message}" key="UNREAD_MESSAGES">
+										<fmt:param value='4' />
+									</fmt:message>
+								</li>
 								<li>
 									<!-- inner menu: contains the actual data -->
 									<ul class="menu">
@@ -184,7 +197,11 @@
 								<span class="label label-warning">10</span>
 							</a>
 							<ul class="dropdown-menu">
-								<li class="header">You have 10 notifications</li>
+								<li class="header">
+									<fmt:message bundle="${message}" key="UNREAD_NOTIFICATIONS">
+										<fmt:param value='10' />
+									</fmt:message>
+								</li>
 								<li>
 									<!-- inner menu: contains the actual data -->
 									<ul class="menu">
@@ -227,7 +244,11 @@
 								<span class="label label-danger">9</span>
 							</a>
 							<ul class="dropdown-menu">
-								<li class="header">You have 9 tasks</li>
+								<li class="header">
+									<fmt:message bundle="${message}" key="UNHANDLED_TASKS">
+										<fmt:param value='9' />
+									</fmt:message>
+								</li>
 								<li>
 									<!-- inner menu: contains the actual data -->
 									<ul class="menu">

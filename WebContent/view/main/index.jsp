@@ -8,7 +8,8 @@
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 		<h1>
-			${contentHeader} <small>Control panel</small>
+			<fmt:message bundle="${message}" key="CONTENT_HEADER" />
+			<small>Control panel</small>
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>

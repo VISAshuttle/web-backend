@@ -1,0 +1,6 @@
+@charset "utf-8";
+
+.navbar-nav {
+	display: flex;
+	align-items: center;
+}
