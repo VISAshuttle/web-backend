@@ -2,7 +2,8 @@
 <%@ page import="java.sql.DriverManager"
 		 import="java.sql.Connection"
 		 import="java.sql.PreparedStatement"
-		 import="java.sql.SQLException" %>
+		 import="java.sql.SQLException"
+		 import="jdbc.ConnectionProvider" %>
 		 
 <%
 	String contextPath = request.getContextPath();
@@ -18,12 +19,11 @@
 		   password = request.getParameter("password");
 	String memberID = email.substring(0, email.indexOf("@"));
 	
-	String jdbcDriver = "jdbc:apache:commons:dbcp:AdminLTE";
 	Connection conn = null;
 	PreparedStatement preState = null;
 	
 	try {
-		conn = DriverManager.getConnection(jdbcDriver);
+		conn = ConnectionProvider.getConnection("chap14");
 		preState = conn.prepareStatement("insert into MEMBER values(?, ?, ?, ?)");
 		preState.setString(1, memberID);
 		preState.setString(2, password);

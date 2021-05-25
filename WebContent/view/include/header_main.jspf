@@ -568,6 +568,8 @@
 									일반게시판</a></li>
 							<li><a href="<%= contextPath %>/view/examples/동아일보.jsp"><i class="fa fa-circle-o"></i>
 									동아일보</a></li>
+							<li><a href="<%= contextPath %>/view/guestbook/messageList.jsp"><i class="fa fa-circle-o"></i>
+									방명록</a></li>
 						</ul>
 					</li>
 					<li class="treeview">

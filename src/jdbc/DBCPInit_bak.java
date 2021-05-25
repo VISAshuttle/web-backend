@@ -17,31 +17,29 @@ import org.apache.commons.pool2.ObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 
-public class DBCPInit extends HttpServlet {
+public class DBCPInit_bak extends HttpServlet {
 
 	@Override
 	public void init() throws ServletException {
 		loadJDBCDriver();
-		initConnectionPool("chap14");
-		initConnectionPool("guestbook");
+		initConnectionPool();
 	}
 
 	private void loadJDBCDriver() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("fail to load JDBC Driver", e);
+		} catch (ClassNotFoundException ex) {
+			throw new RuntimeException("fail to load JDBC Driver", ex);
 		}
 	}
 
-	private void initConnectionPool(String databaseName) {
+	private void initConnectionPool() {
 		try {
 			String jdbcUrl = 
-					"jdbc:mysql://localhost:3306/" + databaseName + 
-					"?useUnicode=true&characterEncoding=utf8";
+					"jdbc:mysql://localhost:3306/guestbook?" + 
+					"useUnicode=true&characterEncoding=utf8";
 			String username = "jspexam";
 			String pw = "jsppw";
-			String poolName = databaseName;
 
 			ConnectionFactory connFactory = new DriverManagerConnectionFactory(jdbcUrl, username, pw);
 
@@ -60,7 +58,8 @@ public class DBCPInit extends HttpServlet {
 			
 			Class.forName("org.apache.commons.dbcp2.PoolingDriver");
 			PoolingDriver driver = (PoolingDriver) DriverManager.getDriver("jdbc:apache:commons:dbcp:");
-			driver.registerPool(poolName, connectionPool);
+			driver.registerPool("AdminLTE", connectionPool);
+			driver.registerPool("guestbook", connectionPool);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
