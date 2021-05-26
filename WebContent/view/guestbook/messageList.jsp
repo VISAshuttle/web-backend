@@ -10,8 +10,9 @@
 	GetMessageListViewService viewService = GetMessageListViewService.getInstance();
 	String pageStr = request.getParameter("page");
 	int pageNum = pageStr == null ? 1 : Integer.parseInt(pageStr);
+	MessageListView view = viewService.getMessageListView(pageNum);
 %>
-<c:set var="view" value="<%= viewService.getMessageListView(pageNum) %>" />
+<c:set var="view" value="<%= view %>" />
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -56,7 +57,7 @@
 				<hr>
 				<div id="list">
 					<c:if test="${view.isEmpty()}">
-						<p id="noMessage">등록된 메시지가 없습니다.</p>
+						<p>등록된 메시지가 없습니다.</p>
 					</c:if>
 					<c:if test="${!view.isEmpty()}">
 						<table border="1">
