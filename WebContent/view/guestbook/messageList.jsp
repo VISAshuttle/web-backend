@@ -7,11 +7,11 @@
 <%@ include file="../include/header.jspf" %>
 
 <%
+	GetMessageListViewService viewService = GetMessageListViewService.getInstance();
 	String pageStr = request.getParameter("page");
 	int pageNum = pageStr == null ? 1 : Integer.parseInt(pageStr);
-	MessageListView view = GetMessageListViewService.getInstance().getMessageListView(pageNum);
 %>
-<c:set var="view" value="<%= view %>" />
+<c:set var="view" value="<%= viewService.getMessageListView(pageNum) %>" />
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -47,33 +47,38 @@
 				</div>
 			</div>
 			<div class="box-body">
-				<form action="writeMessage.jsp" method="post">
-					이름: <input type="text" name="guestName"> <br> 암호: <input
-						type="password" name="password"> <br> 메시지:
-					<textarea name="message" cols="30" rows="3"></textarea>
-					<br> <input type="submit" value="메시지 남기기" />
+				<form method="post" id="writeForm">
+					<p>이름: <input type="text" name="guestName"></p>
+					<p>암호: <input type="password" name="password"></p>
+					<p>메시지: <textarea name="message" cols="30" rows="3"></textarea></p>
+					<p><input type="submit" value="메시지 남기기" /></p>
 				</form>
 				<hr>
-				<c:if test="${view.isEmpty()}">
-					<p>등록된 메시지가 없습니다.</p>
-				</c:if>
-				<c:if test="${!view.isEmpty()}">
-					<table border="1">
-						<c:forEach var="message" items="${view.messageList}">
-							<tr>
-								<td>메시지 번호: ${message.id} <br /> 손님 이름: ${message.guestName}
-									<br /> 메시지: ${message.message} <br /> <a
-									href="confirmDeletion.jsp?messageId=${message.id}">[삭제하기]</a>
-								</td>
-							</tr>
-						</c:forEach>
-					</table>
-			
-					<c:forEach var="pageNum" begin="1" end="${view.totalPages}">
-						<a href="messageList.jsp?page=${pageNum}">[${pageNum}]</a>
-					</c:forEach>
-			
-				</c:if>
+				<div id="list">
+					<c:if test="${view.isEmpty()}">
+						<p id="noMessage">등록된 메시지가 없습니다.</p>
+					</c:if>
+					<c:if test="${!view.isEmpty()}">
+						<table border="1">
+							<c:forEach var="message" items="${view.messageList}">
+								<tr>
+									<td>
+										<p>메시지 번호: ${message.id}</p>
+										<p>손님 이름: ${message.guestName}</p>
+										<p>메시지: ${message.message}</p>
+										<p><a href="confirmDeletion.jsp?messageId=${message.id}">[삭제하기]</a></p>
+									</td>
+								</tr>
+							</c:forEach>
+						</table>
+				
+						<div>
+							<c:forEach var="pageNum" begin="1" end="${view.totalPages}">
+								<span><a href="messageList.jsp?page=${pageNum}">[${pageNum}]</a></span>
+							</c:forEach>
+						</div>
+					</c:if>
+				</div>
 			</div>
 			<!-- /.box-body -->
 			<div class="box-footer">Footer</div>
@@ -87,3 +92,29 @@
 <!-- /.content-wrapper -->
 
 <%@ include file="../include/footer.jspf" %>
+
+<script>
+	$(function() {
+		$("#writeForm").submit(function() {
+			var formData = {
+				guestName: this.guestName.value,
+				password: this.password.value,
+				message: this.message.value
+			};
+			
+			$.ajax({
+				url: "writeMessage.jsp",
+				method: "POST",
+				data: formData,
+				success: function() {
+					$("#writeForm [name=guestName]").val("").focus();
+					$("#writeForm [name=password]").val("");
+					$("#writeForm [name=message]").val("");
+					$("#list").load(window.location.href + " #list");
+				}
+			});
+			
+			event.preventDefault();
+		});
+	});
+</script>

@@ -8,7 +8,8 @@
 </jsp:useBean>
 <%
 	WriteMessageService writeService = WriteMessageService.getInstance();
-	writeService.writeMessage(message);
+	int writeResult = writeService.writeMessage(message);
+	if (writeResult == 0)	response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 %>
 
 <html>
