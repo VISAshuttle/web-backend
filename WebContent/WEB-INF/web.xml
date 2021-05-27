@@ -5,16 +5,27 @@
 		http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
 
-	<servlet>
-		<servlet-name>mysqlDriverLoader</servlet-name>
-		<servlet-class>jdbc.MySQLDriverLoader</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
+<!-- 	<servlet> -->
+<!-- 		<servlet-name>mysqlDriverLoader</servlet-name> -->
+<!-- 		<servlet-class>jdbc.MySQLDriverLoader</servlet-class> -->
+<!-- 		<load-on-startup>1</load-on-startup> -->
+<!-- 	</servlet> -->
 
 	<servlet>
 		<servlet-name>DBCPInit</servlet-name>
 		<servlet-class>jdbc.DBCPInit</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	
+	<filter>
+		<filter-name>LoginCheck</filter-name>
+		<filter-class>filter.LoginCheckFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>LoginCheck</filter-name>
+		<url-pattern>/view/guestbook/*</url-pattern>
+		<url-pattern>/view/main/*</url-pattern>
+	</filter-mapping>
 
 </web-app>

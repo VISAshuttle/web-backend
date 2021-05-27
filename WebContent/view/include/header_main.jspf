@@ -10,20 +10,8 @@
 <%
 	String contextPath = request.getContextPath();
 	String email = null;
-	
-	/* cookie 방식 */
-//	Cookies cookies = new Cookies(request);
-//	if (cookies.exists("AUTH"))
-//		email = cookies.getValue("AUTH");
-	
-	/* session 방식 */
 	if (session.getAttribute("email") != null)
 		email = (String) session.getAttribute("email");
-	
-	/* cookie, session 공통 */
-	else
-		out.print("<script>" + "alert('로그인 후 이용 바랍니다.');" + 
-					"window.location = '" + contextPath + "/view/login/login.jsp';" + "</script>");
 %>
 
 <!DOCTYPE html>

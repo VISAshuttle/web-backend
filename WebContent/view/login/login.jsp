@@ -32,7 +32,7 @@
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
 
-    <form name="login_form" action="loginProcess.jsp" method="post">
+    <form name="login_form" action="<%= contextPath %>/view/login/loginProcess.jsp" method="post">
       <div class="form-group has-feedback">
         <input type="email" name="email" class="form-control" placeholder="Email" >
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
