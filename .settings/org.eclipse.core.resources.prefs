@@ -1,6 +1,6 @@
 eclipse.preferences.version=1
-encoding//WebContent/view/examples/RSS.jsp=UTF-8
-encoding//WebContent/view/examples/gallery.jsp=UTF-8
-encoding//WebContent/view/examples/\uB3D9\uC544\uC77C\uBCF4.jsp=UTF-8
-encoding//WebContent/view/examples/\uC77C\uBC18\uAC8C\uC2DC\uD310.jsp=UTF-8
+encoding//WebContent/WEB-INF/view/examples/RSS.jsp=UTF-8
+encoding//WebContent/WEB-INF/view/examples/gallery.jsp=UTF-8
+encoding//WebContent/WEB-INF/view/examples/\uB3D9\uC544\uC77C\uBCF4.jsp=UTF-8
+encoding//WebContent/WEB-INF/view/examples/\uC77C\uBC18\uAC8C\uC2DC\uD310.jsp=UTF-8
 encoding/<project>=UTF-8

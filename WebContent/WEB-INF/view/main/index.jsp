@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-<%@ include file="../include/header_main.jspf" %>
+<%@ include file="../include/header_index.jspf" %>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -580,4 +580,4 @@
 </div>
 <!-- /.content-wrapper -->
 
-<%@ include file="../include/footer_main.jspf" %>
+<%@ include file="../include/footer_index.jspf" %>

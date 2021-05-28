@@ -29,7 +29,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<%= contextPath %>/view/main/index.jsp" class="logo">
+    <a href="<%= contextPath %>/main/index.do" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
@@ -163,13 +163,13 @@
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div>
-                <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li>
+				<div class="pull-left">
+				  <a href="<%= contextPath %>/main/profile.do" class="btn btn-default btn-flat">Profile</a>
+				</div>
+				<div class="pull-right">
+				  <a href="<%= contextPath %>/logout.do" class="btn btn-default btn-flat">Sign out</a>
+				</div>
+			  </li>
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->

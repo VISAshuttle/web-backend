@@ -58,24 +58,21 @@ public class DBCPInitListener implements ServletContextListener {
 
 			PoolableConnectionFactory poolableConnFactory = new PoolableConnectionFactory(connFactory, null);
 			String validationQuery = prop.getProperty("validationQuery");
-			if (validationQuery != null && !validationQuery.isEmpty()) {
+			if (validationQuery != null && !validationQuery.isEmpty())
 				poolableConnFactory.setValidationQuery(validationQuery);
-			}
+			
 			GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();
 			poolConfig.setTimeBetweenEvictionRunsMillis(1000L * 60L * 5L);
 			poolConfig.setTestWhileIdle(true);
-			int minIdle = getIntProperty(prop, "minIdle", 5);
-			poolConfig.setMinIdle(minIdle);
-			int maxTotal = getIntProperty(prop, "maxTotal", 50);
-			poolConfig.setMaxTotal(maxTotal);
+			int minIdle = getIntProperty(prop, "minIdle", 5); poolConfig.setMinIdle(minIdle);
+			int maxTotal = getIntProperty(prop, "maxTotal", 50); poolConfig.setMaxTotal(maxTotal);
 
 			GenericObjectPool<PoolableConnection> connectionPool = new GenericObjectPool<>(poolableConnFactory, poolConfig);
 			poolableConnFactory.setPool(connectionPool);
 			
 			Class.forName("org.apache.commons.dbcp2.PoolingDriver");
 			PoolingDriver driver = (PoolingDriver) DriverManager.getDriver("jdbc:apache:commons:dbcp:");
-			String poolName = prop.getProperty("poolName");
-			driver.registerPool(poolName, connectionPool);
+			String poolName = prop.getProperty("dbName"); driver.registerPool(poolName, connectionPool);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

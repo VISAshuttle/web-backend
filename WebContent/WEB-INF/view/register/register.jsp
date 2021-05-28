@@ -26,13 +26,13 @@
 <body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
-	<a href="<%= contextPath %>/view/main/index.jsp"><b>Admin</b>LTE</a>
+	<a href="<%= contextPath %>/WEB-INF/view/main/index.jsp"><b>Admin</b>LTE</a>
   </div>
 
   <div class="register-box-body">
     <p class="login-box-msg">Register a new membership</p>
 
-    <form name="register_form" id="register_form" action="registerProcess.jsp" method="post">
+    <form name="register_form" id="register_form" action="<%= contextPath %>/register.do" method="post">
       <div class="form-group has-feedback">
         <input type="text" name="name" class="form-control" placeholder="Full name">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -46,7 +46,7 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" name="retyped_password" class="form-control" placeholder="Retype password">
+        <input type="password" name="retypedPassword" class="form-control" placeholder="Retype password">
         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
       </div>
       <div class="row">
@@ -94,9 +94,9 @@
     });
     
     $("#register_form").submit(function() {
-    		if ($("input[name='password']").val() != $("input[name='retyped_password']").val()) {
+    		if ($("input[name='password']").val() != $("input[name='retypedPassword']").val()) {
     			alert("패스워드 확인이 일치하지 않습니다.");
-    			$("input[name='retyped_password']").val("").focus();
+    			$("input[name='retypedPassword']").val("").focus();
     			return false;
     		}
     });
