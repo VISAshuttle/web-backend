@@ -12,7 +12,7 @@ import member.model.Member;
 import member.service.exception.InvalidPasswordException;
 import member.service.exception.MemberNotFoundException;
 
-public class PasswordChangeService extends HttpServlet {
+public class ChangePasswordService extends HttpServlet {
 
 	private MemberDAO memberDAO = new MemberDAO();
 

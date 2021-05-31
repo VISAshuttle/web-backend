@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import auth.model.User;
-import member.service.PasswordChangeService;
+import member.service.ChangePasswordService;
 import member.service.exception.InvalidPasswordException;
 import member.service.exception.MemberNotFoundException;
 
-public class PasswordChangeHandler implements CommandHandler {
+public class ChangePasswordHandler implements CommandHandler {
 
 	private static final String FORM_VIEW = "/WEB-INF/view/main/profile.jsp";
 
@@ -46,8 +46,8 @@ public class PasswordChangeHandler implements CommandHandler {
 		if (newPassword == null || newPassword.isEmpty())				errors.put("EmptyNewPassword", Boolean.TRUE);
 		if (errors.isEmpty()) {
 			try {
-				PasswordChangeService pwdChangeService = new PasswordChangeService();
-				pwdChangeService.changePassword(user.getId(), currentPassword, newPassword);
+				ChangePasswordService changePwdService = new ChangePasswordService();
+				changePwdService.changePassword(user.getId(), currentPassword, newPassword);
 				return "/WEB-INF/view/main/passwordChangeSuccess.jsp";
 			} catch (InvalidPasswordException e) {
 				errors.put("InvalidCurrentPassword", Boolean.TRUE);
