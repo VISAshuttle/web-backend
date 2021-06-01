@@ -1,6 +1,24 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-<%@ include file="../include/header_index.jspf" %>
+<%@ include file="../include/header.jspf" %>
+
+<!-- Morris chart -->
+<link rel="stylesheet" href="<%= contextPath %>/resources/bower_components/morris.js/morris.css">
+<!-- jvectormap -->
+<link rel="stylesheet" href="<%= contextPath %>/resources/bower_components/jvectormap/jquery-jvectormap.css">
+<!-- Date Picker -->
+<link rel="stylesheet"
+	href="<%= contextPath %>/resources/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+<!-- Daterange picker -->
+<link rel="stylesheet"
+	href="<%= contextPath %>/resources/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+<!-- bootstrap wysihtml5 - text editor -->
+<link rel="stylesheet" href="<%= contextPath %>/resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+
+<!-- Banner using mySwipe -->
+<link rel="stylesheet" href="<%= contextPath %>/resources/dist/css/mySwipe.css" />
+
+<!------------------------------------------------------------------------------->
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -24,41 +42,30 @@
 			<div id="mySwipe" class="swipe">
 				<ul class="swipe-wrap">
 					<!-- 배너 목록 -->
-					<li><a href="#"><img
-							src="<%= contextPath %>/resources/dist/img/main/visual/visual_img_1.jpg"
-							alt="" /></a></li>
-					<li><a href="#"><img
-							src="<%= contextPath %>/resources/dist/img/main/visual/visual_img_2.jpg"
-							alt="" /></a></li>
-					<li><a href="#"><img
-							src="<%= contextPath %>/resources/dist/img/main/visual/visual_img_3.jpg"
-							alt="" /></a></li>
+					<li><a href="#"><img src="<%= contextPath %>/resources/dist/img/main/visual/visual_img_1.jpg"
+								alt="" /></a></li>
+					<li><a href="#"><img src="<%= contextPath %>/resources/dist/img/main/visual/visual_img_2.jpg"
+								alt="" /></a></li>
+					<li><a href="#"><img src="<%= contextPath %>/resources/dist/img/main/visual/visual_img_3.jpg"
+								alt="" /></a></li>
 				</ul>
 			</div>
 			<ul class="touch_bullet">
 				<!-- 배너 위치 표시 -->
-				<li><img
-					src="<%= contextPath %>/resources/dist/img/main/visual/visual_bullet_on.png"
-					alt="" /></li>
-				<li><img
-					src="<%= contextPath %>/resources/dist/img/main/visual/visual_bullet_off.png"
-					alt="" /></li>
-				<li><img
-					src="<%= contextPath %>/resources/dist/img/main/visual/visual_bullet_off.png"
-					alt="" /></li>
+				<li><img src="<%= contextPath %>/resources/dist/img/main/visual/visual_bullet_on.png" alt="" /></li>
+				<li><img src="<%= contextPath %>/resources/dist/img/main/visual/visual_bullet_off.png" alt="" /></li>
+				<li><img src="<%= contextPath %>/resources/dist/img/main/visual/visual_bullet_off.png" alt="" /></li>
 			</ul>
 			<p class="touch_left_btn">
 				<!-- 이전 버튼 -->
-				<a href="#"> <img
-					src="<%= contextPath %>/resources/dist/img/main/visual/visual_btn_left.png"
-					alt="이전 배너" />
+				<a href="#"> <img src="<%= contextPath %>/resources/dist/img/main/visual/visual_btn_left.png"
+						alt="이전 배너" />
 				</a>
 			</p>
 			<p class="touch_right_btn">
 				<!-- 이전 버튼 -->
-				<a href="#"> <img
-					src="<%= contextPath %>/resources/dist/img/main/visual/visual_btn_right.png"
-					alt="다음 배너" />
+				<a href="#"> <img src="<%= contextPath %>/resources/dist/img/main/visual/visual_btn_right.png"
+						alt="다음 배너" />
 				</a>
 			</p>
 		</div>
@@ -75,8 +82,7 @@
 					<div class="icon">
 						<i class="ion ion-bag"></i>
 					</div>
-					<a href="#" class="small-box-footer">More info <i
-						class="fa fa-arrow-circle-right"></i></a>
+					<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 				</div>
 			</div>
 			<!-- ./col -->
@@ -93,8 +99,7 @@
 					<div class="icon">
 						<i class="ion ion-stats-bars"></i>
 					</div>
-					<a href="#" class="small-box-footer">More info <i
-						class="fa fa-arrow-circle-right"></i></a>
+					<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 				</div>
 			</div>
 			<!-- ./col -->
@@ -109,8 +114,7 @@
 					<div class="icon">
 						<i class="ion ion-person-add"></i>
 					</div>
-					<a href="#" class="small-box-footer">More info <i
-						class="fa fa-arrow-circle-right"></i></a>
+					<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 				</div>
 			</div>
 			<!-- ./col -->
@@ -125,8 +129,7 @@
 					<div class="icon">
 						<i class="ion ion-pie-graph"></i>
 					</div>
-					<a href="#" class="small-box-footer">More info <i
-						class="fa fa-arrow-circle-right"></i></a>
+					<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 				</div>
 			</div>
 			<!-- ./col -->
@@ -149,8 +152,7 @@
 						<!-- Morris chart - Sales -->
 						<div class="chart tab-pane active" id="revenue-chart"
 							style="position: relative; height: 300px;"></div>
-						<div class="chart tab-pane" id="sales-chart"
-							style="position: relative; height: 300px;"></div>
+						<div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
 					</div>
 				</div>
 				<!-- /.nav-tabs-custom -->
@@ -162,8 +164,7 @@
 
 						<h3 class="box-title">Chat</h3>
 
-						<div class="box-tools pull-right" data-toggle="tooltip"
-							title="Status">
+						<div class="box-tools pull-right" data-toggle="tooltip" title="Status">
 							<div class="btn-group" data-toggle="btn-toggle">
 								<button type="button" class="btn btn-default btn-sm active">
 									<i class="fa fa-square text-green"></i>
@@ -177,13 +178,12 @@
 					<div class="box-body chat" id="chat-box">
 						<!-- chat item -->
 						<div class="item">
-							<img
-								src="<%= contextPath %>/resources/dist/img/user4-128x128.jpg"
-								alt="user image" class="online">
+							<img src="<%= contextPath %>/resources/dist/img/user4-128x128.jpg" alt="user image"
+								class="online">
 
 							<p class="message">
-								<a href="#" class="name"> <small
-									class="text-muted pull-right"><i class="fa fa-clock-o"></i>
+								<a href="#" class="name"> <small class="text-muted pull-right"><i
+											class="fa fa-clock-o"></i>
 										2:15</small> Mike Doe
 								</a> I would like to meet you to discuss the latest news about the
 								arrival of the new theme. They say it is going to be one the
@@ -203,13 +203,12 @@
 						<!-- /.item -->
 						<!-- chat item -->
 						<div class="item">
-							<img
-								src="<%= contextPath %>/resources/dist/img/user3-128x128.jpg"
-								alt="user image" class="offline">
+							<img src="<%= contextPath %>/resources/dist/img/user3-128x128.jpg" alt="user image"
+								class="offline">
 
 							<p class="message">
-								<a href="#" class="name"> <small
-									class="text-muted pull-right"><i class="fa fa-clock-o"></i>
+								<a href="#" class="name"> <small class="text-muted pull-right"><i
+											class="fa fa-clock-o"></i>
 										5:15</small> Alexander Pierce
 								</a> I would like to meet you to discuss the latest news about the
 								arrival of the new theme. They say it is going to be one the
@@ -219,13 +218,12 @@
 						<!-- /.item -->
 						<!-- chat item -->
 						<div class="item">
-							<img
-								src="<%= contextPath %>/resources/dist/img/user2-160x160.jpg"
-								alt="user image" class="offline">
+							<img src="<%= contextPath %>/resources/dist/img/user2-160x160.jpg" alt="user image"
+								class="offline">
 
 							<p class="message">
-								<a href="#" class="name"> <small
-									class="text-muted pull-right"><i class="fa fa-clock-o"></i>
+								<a href="#" class="name"> <small class="text-muted pull-right"><i
+											class="fa fa-clock-o"></i>
 										5:30</small> Susan Doe
 								</a> I would like to meet you to discuss the latest news about the
 								arrival of the new theme. They say it is going to be one the
@@ -271,57 +269,62 @@
 						<!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
 						<ul class="todo-list">
 							<li>
-								<!-- drag handle --> <span class="handle"> <i
-									class="fa fa-ellipsis-v"></i> <i class="fa fa-ellipsis-v"></i>
-							</span> <!-- checkbox --> <input type="checkbox" value=""> <!-- todo text -->
+								<!-- drag handle --> <span class="handle"> <i class="fa fa-ellipsis-v"></i> <i
+										class="fa fa-ellipsis-v"></i>
+								</span> <!-- checkbox --> <input type="checkbox" value=""> <!-- todo text -->
 								<span class="text">Design a nice theme</span> <!-- Emphasis label -->
-								<small class="label label-danger"><i
-									class="fa fa-clock-o"></i> 2 mins</small> <!-- General tools such as edit or delete-->
+								<small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+								<!-- General tools such as edit or delete-->
 								<div class="tools">
 									<i class="fa fa-edit"></i> <i class="fa fa-trash-o"></i>
 								</div>
 							</li>
 							<li><span class="handle"> <i class="fa fa-ellipsis-v"></i>
 									<i class="fa fa-ellipsis-v"></i>
-							</span> <input type="checkbox" value=""> <span class="text">Make
+								</span> <input type="checkbox" value=""> <span class="text">Make
 									the theme responsive</span> <small class="label label-info"><i
-									class="fa fa-clock-o"></i> 4 hours</small>
+										class="fa fa-clock-o"></i> 4 hours</small>
 								<div class="tools">
 									<i class="fa fa-edit"></i> <i class="fa fa-trash-o"></i>
-								</div></li>
+								</div>
+							</li>
 							<li><span class="handle"> <i class="fa fa-ellipsis-v"></i>
 									<i class="fa fa-ellipsis-v"></i>
-							</span> <input type="checkbox" value=""> <span class="text">Let
+								</span> <input type="checkbox" value=""> <span class="text">Let
 									theme shine like a star</span> <small class="label label-warning"><i
-									class="fa fa-clock-o"></i> 1 day</small>
+										class="fa fa-clock-o"></i> 1 day</small>
 								<div class="tools">
 									<i class="fa fa-edit"></i> <i class="fa fa-trash-o"></i>
-								</div></li>
+								</div>
+							</li>
 							<li><span class="handle"> <i class="fa fa-ellipsis-v"></i>
 									<i class="fa fa-ellipsis-v"></i>
-							</span> <input type="checkbox" value=""> <span class="text">Let
+								</span> <input type="checkbox" value=""> <span class="text">Let
 									theme shine like a star</span> <small class="label label-success"><i
-									class="fa fa-clock-o"></i> 3 days</small>
+										class="fa fa-clock-o"></i> 3 days</small>
 								<div class="tools">
 									<i class="fa fa-edit"></i> <i class="fa fa-trash-o"></i>
-								</div></li>
+								</div>
+							</li>
 							<li><span class="handle"> <i class="fa fa-ellipsis-v"></i>
 									<i class="fa fa-ellipsis-v"></i>
-							</span> <input type="checkbox" value=""> <span class="text">Check
-									your messages and notifications</span> <small
-								class="label label-primary"><i class="fa fa-clock-o"></i>
+								</span> <input type="checkbox" value=""> <span class="text">Check
+									your messages and notifications</span> <small class="label label-primary"><i
+										class="fa fa-clock-o"></i>
 									1 week</small>
 								<div class="tools">
 									<i class="fa fa-edit"></i> <i class="fa fa-trash-o"></i>
-								</div></li>
+								</div>
+							</li>
 							<li><span class="handle"> <i class="fa fa-ellipsis-v"></i>
 									<i class="fa fa-ellipsis-v"></i>
-							</span> <input type="checkbox" value=""> <span class="text">Let
+								</span> <input type="checkbox" value=""> <span class="text">Let
 									theme shine like a star</span> <small class="label label-default"><i
-									class="fa fa-clock-o"></i> 1 month</small>
+										class="fa fa-clock-o"></i> 1 month</small>
 								<div class="tools">
 									<i class="fa fa-edit"></i> <i class="fa fa-trash-o"></i>
-								</div></li>
+								</div>
+							</li>
 						</ul>
 					</div>
 					<!-- /.box-body -->
@@ -341,8 +344,8 @@
 						<h3 class="box-title">Quick Email</h3>
 						<!-- tools box -->
 						<div class="pull-right box-tools">
-							<button type="button" class="btn btn-info btn-sm"
-								data-widget="remove" data-toggle="tooltip" title="Remove">
+							<button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip"
+								title="Remove">
 								<i class="fa fa-times"></i>
 							</button>
 						</div>
@@ -351,12 +354,10 @@
 					<div class="box-body">
 						<form action="#" method="post">
 							<div class="form-group">
-								<input type="email" class="form-control" name="emailto"
-									placeholder="Email to:">
+								<input type="email" class="form-control" name="emailto" placeholder="Email to:">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" name="subject"
-									placeholder="Subject">
+								<input type="text" class="form-control" name="subject" placeholder="Subject">
 							</div>
 							<div>
 								<textarea class="textarea" placeholder="Message"
@@ -365,8 +366,7 @@
 						</form>
 					</div>
 					<div class="box-footer clearfix">
-						<button type="button" class="pull-right btn btn-default"
-							id="sendEmail">
+						<button type="button" class="pull-right btn btn-default" id="sendEmail">
 							Send <i class="fa fa-arrow-circle-right"></i>
 						</button>
 					</div>
@@ -382,14 +382,12 @@
 					<div class="box-header">
 						<!-- tools box -->
 						<div class="pull-right box-tools">
-							<button type="button"
-								class="btn btn-primary btn-sm daterange pull-right"
+							<button type="button" class="btn btn-primary btn-sm daterange pull-right"
 								data-toggle="tooltip" title="Date range">
 								<i class="fa fa-calendar"></i>
 							</button>
-							<button type="button" class="btn btn-primary btn-sm pull-right"
-								data-widget="collapse" data-toggle="tooltip" title="Collapse"
-								style="margin-right: 5px;">
+							<button type="button" class="btn btn-primary btn-sm pull-right" data-widget="collapse"
+								data-toggle="tooltip" title="Collapse" style="margin-right: 5px;">
 								<i class="fa fa-minus"></i>
 							</button>
 						</div>
@@ -405,14 +403,12 @@
 					<!-- /.box-body-->
 					<div class="box-footer no-border">
 						<div class="row">
-							<div class="col-xs-4 text-center"
-								style="border-right: 1px solid #f4f4f4">
+							<div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
 								<div id="sparkline-1"></div>
 								<div class="knob-label">Visitors</div>
 							</div>
 							<!-- ./col -->
-							<div class="col-xs-4 text-center"
-								style="border-right: 1px solid #f4f4f4">
+							<div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
 								<div id="sparkline-2"></div>
 								<div class="knob-label">Online</div>
 							</div>
@@ -436,12 +432,10 @@
 						<h3 class="box-title">Sales Graph</h3>
 
 						<div class="box-tools pull-right">
-							<button type="button" class="btn bg-teal btn-sm"
-								data-widget="collapse">
+							<button type="button" class="btn bg-teal btn-sm" data-widget="collapse">
 								<i class="fa fa-minus"></i>
 							</button>
-							<button type="button" class="btn bg-teal btn-sm"
-								data-widget="remove">
+							<button type="button" class="btn bg-teal btn-sm" data-widget="remove">
 								<i class="fa fa-times"></i>
 							</button>
 						</div>
@@ -452,25 +446,23 @@
 					<!-- /.box-body -->
 					<div class="box-footer no-border">
 						<div class="row">
-							<div class="col-xs-4 text-center"
-								style="border-right: 1px solid #f4f4f4">
-								<input type="text" class="knob" data-readonly="true" value="20"
-									data-width="60" data-height="60" data-fgColor="#39CCCC">
+							<div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+								<input type="text" class="knob" data-readonly="true" value="20" data-width="60"
+									data-height="60" data-fgColor="#39CCCC">
 
 								<div class="knob-label">Mail-Orders</div>
 							</div>
 							<!-- ./col -->
-							<div class="col-xs-4 text-center"
-								style="border-right: 1px solid #f4f4f4">
-								<input type="text" class="knob" data-readonly="true" value="50"
-									data-width="60" data-height="60" data-fgColor="#39CCCC">
+							<div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+								<input type="text" class="knob" data-readonly="true" value="50" data-width="60"
+									data-height="60" data-fgColor="#39CCCC">
 
 								<div class="knob-label">Online</div>
 							</div>
 							<!-- ./col -->
 							<div class="col-xs-4 text-center">
-								<input type="text" class="knob" data-readonly="true" value="30"
-									data-width="60" data-height="60" data-fgColor="#39CCCC">
+								<input type="text" class="knob" data-readonly="true" value="30" data-width="60"
+									data-height="60" data-fgColor="#39CCCC">
 
 								<div class="knob-label">In-Store</div>
 							</div>
@@ -492,8 +484,7 @@
 						<div class="pull-right box-tools">
 							<!-- button with a dropdown -->
 							<div class="btn-group">
-								<button type="button"
-									class="btn btn-success btn-sm dropdown-toggle"
+								<button type="button" class="btn btn-success btn-sm dropdown-toggle"
 									data-toggle="dropdown">
 									<i class="fa fa-bars"></i>
 								</button>
@@ -504,12 +495,10 @@
 									<li><a href="#">View calendar</a></li>
 								</ul>
 							</div>
-							<button type="button" class="btn btn-success btn-sm"
-								data-widget="collapse">
+							<button type="button" class="btn btn-success btn-sm" data-widget="collapse">
 								<i class="fa fa-minus"></i>
 							</button>
-							<button type="button" class="btn btn-success btn-sm"
-								data-widget="remove">
+							<button type="button" class="btn btn-success btn-sm" data-widget="remove">
 								<i class="fa fa-times"></i>
 							</button>
 						</div>
@@ -526,41 +515,33 @@
 							<div class="col-sm-6">
 								<!-- Progress bars -->
 								<div class="clearfix">
-									<span class="pull-left">Task #1</span> <small
-										class="pull-right">90%</small>
+									<span class="pull-left">Task #1</span> <small class="pull-right">90%</small>
 								</div>
 								<div class="progress xs">
-									<div class="progress-bar progress-bar-green"
-										style="width: 90%;"></div>
+									<div class="progress-bar progress-bar-green" style="width: 90%;"></div>
 								</div>
 
 								<div class="clearfix">
-									<span class="pull-left">Task #2</span> <small
-										class="pull-right">70%</small>
+									<span class="pull-left">Task #2</span> <small class="pull-right">70%</small>
 								</div>
 								<div class="progress xs">
-									<div class="progress-bar progress-bar-green"
-										style="width: 70%;"></div>
+									<div class="progress-bar progress-bar-green" style="width: 70%;"></div>
 								</div>
 							</div>
 							<!-- /.col -->
 							<div class="col-sm-6">
 								<div class="clearfix">
-									<span class="pull-left">Task #3</span> <small
-										class="pull-right">60%</small>
+									<span class="pull-left">Task #3</span> <small class="pull-right">60%</small>
 								</div>
 								<div class="progress xs">
-									<div class="progress-bar progress-bar-green"
-										style="width: 60%;"></div>
+									<div class="progress-bar progress-bar-green" style="width: 60%;"></div>
 								</div>
 
 								<div class="clearfix">
-									<span class="pull-left">Task #4</span> <small
-										class="pull-right">40%</small>
+									<span class="pull-left">Task #4</span> <small class="pull-right">40%</small>
 								</div>
 								<div class="progress xs">
-									<div class="progress-bar progress-bar-green"
-										style="width: 40%;"></div>
+									<div class="progress-bar progress-bar-green" style="width: 40%;"></div>
 								</div>
 							</div>
 							<!-- /.col -->
@@ -580,4 +561,36 @@
 </div>
 <!-- /.content-wrapper -->
 
-<%@ include file="../include/footer_index.jspf" %>
+<%@ include file="../include/footer.jspf" %>
+
+<!-- jQuery UI 1.11.4 -->
+<script src="<%= contextPath %>/resources/bower_components/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+	$.widget.bridge('uibutton', $.ui.button);
+</script>
+<!-- Morris.js charts -->
+<script src="<%= contextPath %>/resources/bower_components/raphael/raphael.min.js"></script>
+<script src="<%= contextPath %>/resources/bower_components/morris.js/morris.min.js"></script>
+<!-- Sparkline -->
+<script src="<%= contextPath %>/resources/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+<!-- jvectormap -->
+<script src="<%= contextPath %>/resources/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="<%= contextPath %>/resources/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="<%= contextPath %>/resources/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="<%= contextPath %>/resources/bower_components/moment/min/moment.min.js"></script>
+<script src="<%= contextPath %>/resources/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- datepicker -->
+<script src="<%= contextPath %>/resources/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="<%= contextPath %>/resources/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="<%= contextPath %>/resources/dist/js/pages/dashboard.js"></script>
+<!-- Select Language -->
+<script src="<%= contextPath %>/resources/dist/js/language.js"></script>
+<!-- swipejs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/swipejs/2.3.1/swipe.js"></script>
+<!-- swipe banner using swipejs -->
+<script src="<%= contextPath %>/resources/dist/js/mySwipe.js"></script>

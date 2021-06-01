@@ -4,11 +4,6 @@
 
 <%@ include file="../include/header.jspf" %>
 
-<%
-	User user = (User) request.getSession().getAttribute("authUser");
-%>
-<c:set var="user" value="<%= user %>" />
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -34,7 +29,7 @@
             <div class="box-body box-profile">
               <img class="profile-user-img img-responsive img-circle" src="<%= contextPath %>/resources/dist/img/user4-128x128.jpg" alt="User profile picture">
 
-              <h3 class="profile-username text-center">Nina Mcintire</h3>
+              <h3 class="profile-username text-center">${user.name}</h3>
 
               <p class="text-muted text-center">Software Engineer</p>
 
