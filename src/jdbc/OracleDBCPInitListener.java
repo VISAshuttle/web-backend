@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.sql.DriverManager;
 import java.util.Properties;
-import java.util.StringTokenizer;
+import java.util.StringJoiner;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -17,11 +17,11 @@ import org.apache.commons.dbcp2.PoolingDriver;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 
-public class DBCPInitListener implements ServletContextListener {
+public class OracleDBCPInitListener implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
-		String poolConfig = sce.getServletContext().getInitParameter("poolConfig");
+		String poolConfig = sce.getServletContext().getInitParameter("OraclePoolConfig");
 		Properties prop = new Properties();
 		try {
 			prop.load(new StringReader(poolConfig));
@@ -30,12 +30,7 @@ public class DBCPInitListener implements ServletContextListener {
 		}
 		
 		loadJDBCDriver(prop.getProperty("jdbcDriver"));
-		
-		StringTokenizer stk = new StringTokenizer(prop.getProperty("dbName"), ", ");
-		while (stk.hasMoreTokens()) {
-			prop.setProperty("dbName", stk.nextToken());
-			initConnectionPool(prop);
-		}
+		initConnectionPool(prop);
 	}
 
 	private void loadJDBCDriver(String driverClass) {
@@ -48,10 +43,12 @@ public class DBCPInitListener implements ServletContextListener {
 	
 	private void initConnectionPool(Properties prop) {
 		try {
-			String jdbcUrl = 
-					prop.getProperty("jdbcUrl") +
-					prop.getProperty("dbName") +
-					"?characterEncoding=utf8";
+			StringJoiner sj = new StringJoiner(":");
+			sj.add(prop.getProperty("driverType"));
+			sj.add(prop.getProperty("host"));
+			sj.add(prop.getProperty("port"));
+			sj.add(prop.getProperty("SID"));
+			String jdbcUrl = sj.toString();
 			String dbUser = prop.getProperty("dbUser");
 			String dbPass = prop.getProperty("dbPass");
 			ConnectionFactory connFactory = new DriverManagerConnectionFactory(jdbcUrl, dbUser, dbPass);
@@ -72,7 +69,7 @@ public class DBCPInitListener implements ServletContextListener {
 			
 			Class.forName("org.apache.commons.dbcp2.PoolingDriver");
 			PoolingDriver driver = (PoolingDriver) DriverManager.getDriver("jdbc:apache:commons:dbcp:");
-			String poolName = prop.getProperty("dbName"); driver.registerPool(poolName, connectionPool);
+			String poolName = prop.getProperty("poolName"); driver.registerPool(poolName, connectionPool);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
